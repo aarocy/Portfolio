@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron - Handcrafted Web Design</title>
+    <meta name="description" content="Manual web design and development services. Framer sites, React/TypeScript development, and lightweight branding for small businesses.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Aaron - Handcrafted Web Design">
+    <meta property="og:description" content="Manual web design and development services. No AI fluff.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aaron.site">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aaron - Handcrafted Web Design">
+    <meta name="twitter:description" content="Manual web design and development services. No AI fluff.">
+    
+    <link rel="canonical" href="https://aaron.site">
+    
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #fafafa;
+            overflow-x: hidden;
+        }
+
+        /* Skip to content link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #0066ff;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Grid system */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+            align-items: center;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e5e5;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .header.compact {
+            padding: 12px 0;
+        }
+
+        .header .container {
+            padding: 20px 24px;
+            transition: padding 0.3s ease;
+        }
+
+        .header.compact .container {
+            padding: 12px 24px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: #0066ff;
+            outline: none;
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 120px 0 80px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            grid-column: 1 / 8;
+        }
+
+        .hero-image {
+            grid-column: 9 / 13;
+            justify-self: end;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.18s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: #0066ff;
+            color: white;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+            outline: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #0066ff;
+            border-color: #0066ff;
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            background: #0066ff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.2);
+            outline: none;
+        }
+
+        .hero-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0066ff, #4d94ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+            transform: rotate(-2deg);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #666;
+            margin-bottom: 48px;
+            max-width: 600px;
+        }
+
+        /* Work section */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .work-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .work-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .work-card:nth-child(even) {
+            transform: translateY(16px);
+        }
+
+        .work-card:nth-child(even):hover {
+            transform: translateY(12px);
+        }
+
+        .work-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .work-card .tech {
+            color: #0066ff;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .work-card p {
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .work-card .result {
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Services section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .service-card .scope {
+            color: #666;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        .service-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .timeline {
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .price {
+            color: #0066ff;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        /* About section */
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.125rem;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border-left: 4px solid #0066ff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .testimonial blockquote {
+            font-size: 1.125rem;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .testimonial cite {
+            color: #666;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* Contact section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-top: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e5e5;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0066ff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-message {
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        .social-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover,
+        .social-links a:focus {
+            color: #0066ff;
+            outline: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus {
+            color: #0066ff;
+            outline: none;
+        }
+
+        .footer-note {
+            font-size: 0.875rem;
+            color: #888;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 80px 0 60px;
+                text-align: center;
+            }
+
+            .hero-content {
+                grid-column: 1 / -1;
+                margin-bottom: 40px;
+            }
+
+            .hero-image {
+                grid-column: 1 / -1;
+                justify-self: center;
+            }
+
+            .hero-avatar {
+                width: 150px;
+                height: 150px;
+                font-size: 36px;
+            }
+
+            .cta-group {
+                justify-content: center;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .work-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .work-card:nth-child(even) {
+                transform: none;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.125rem;
+            }
+
+            .work-card,
+            .service-card,
+            .contact-form {
+                padding: 24px;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .section {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Focus styles */
+        *:focus {
+            outline: 2px solid #0066ff;
+            outline-offset: 2px;
+        }
+
+        /* Utility classes */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav" role="navigation" aria-label="Main navigation">
+                <a href="#" class="logo" aria-label="Aaron - Home">Aaron</a>
+                <ul class="nav-links">
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="hero">
+            <div class="container">
+                <div class="grid">
+                    <div class="hero-content">
+                        <h1>Handcrafted web design. Fast. Clear. Human.</h1>
+                        <p class="tagline">Manual builds in Framer or full-code React/TS—shipped clean, accessible, and fast.</p>
+                        <div class="cta-group">
+                            <a href="#contact" class="btn btn-primary">Work with me</a>
+                            <a href="#work" class="btn btn-secondary">See projects</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="hero-avatar" aria-label="Aaron's avatar">A</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="section">
+            <div class="container">
+                <h2 class="section-title">Selected Work</h2>
+                <p class="section-subtitle">Real projects. Real results. Each one built by hand with attention to performance and conversion.</p>
+                
+                <div class="work-grid">
+                    <article class="work-card">
+                        <h3>ChronoMind</h3>
+                        <p class="tech">Framer + Custom Code</p>
+                        <p>Predictive SaaS needed a landing page that converted visitors into trial users. Built a clean, conversion-first design with strategic CTAs and social proof placement.</p>
+                        <p class="result">Result: 34% increase in trial signups within first month</p>
+                    </article>
+
+                    <article class="work-card">
+                        <h3>CTA Sentinel</h3>
+                        <p class="tech">React/TypeScript + Vercel</p>
+                        <p>Security startup wanted to avoid typical dark "hacker" aesthetics. Created a calm, trustworthy design that clearly communicated complex technical benefits.</p>
+                        <p class="result">Result: 28% boost in enterprise demo requests</p>
+                    </article>
+
+                    <article class="work-card">
+                        <h3>Flooded Road Detection</h3>
+                        <p class="tech">React + Data Visualization</p>
+                        <p>Hackathon project needed a clear presentation of flood prediction data. Built interactive maps and simple charts that made complex data accessible to emergency responders.</p>
+                        <p class="result">Result: Won "Best Public Safety Solution" at Smart India Hackathon</p>
+                    </article>
+
+                    <article class="work-card">
+                        <h3>Footstep Energy Tile</h3>
+                        <p class="tech">HTML/CSS + Custom Animations</p>
+                        <p>Hardware maker project showcasing kinetic energy harvesting tiles. Created a technical showcase with clean diagrams and performance data visualization.</p>
+                        <p class="result">Result: Featured in 3 engineering publications</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section">
+            <div class="container">
+                <h2 class="section-title">Services</h2>
+                <p class="section-subtitle">Fewer choices, clearer actions, faster pages. Everything built manually for maximum performance.</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Landing Pages</h3>
+                        <p class="scope">Single-page sites that convert visitors into customers. Clean design, strategic copy placement, mobile-first approach.</p>
+                        <div class="service-details">
+                            <span class="timeline">1-2 weeks</span>
+                            <span class="price">₹25,000 / $300</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Lightweight Branding</h3>
+                        <p class="scope">Manual logo design in Inkscape, color palette, and basic brand guidelines. No AI generation—crafted by hand.</p>
+                        <div class="service-details">
+                            <span class="timeline">1 week</span>
+                            <span class="price">₹15,000 / $180</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Framer Sites</h3>
+                        <p class="scope">Custom Framer builds with code injections for advanced functionality. CMS setup and responsive design included.</p>
+                        <div class="service-details">
+                            <span class="timeline">2-3 weeks</span>
+                            <span class="price">₹40,000 / $480</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Full-Code React/TSX</h3>
+                        <p class="scope">Complete React/TypeScript applications deployed on Vercel. Custom components, state management, API integration.</p>
+                        <div class="service-details">
+                            <span class="timeline">3-4 weeks</span>
+                            <span class="price">₹60,000 / $720</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="section-title">About</h2>
+                    <p>Student maker from Kerala, India. I build websites the manual way—no AI templates, no cookie-cutter solutions. Every project gets individual attention and custom code.</p>
+                    <p>I prefer craftsmanship over automation. Tools like Inkscape for logos, Figma for wireframes, Framer for quick builds, and React/TypeScript for complex applications. Everything ships fast and performs well.</p>
+                    <p>Currently studying computer science while building for small businesses, creators, and indie startups who value quality over quantity.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">What Clients Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial">
+                        <blockquote>"Aaron delivered exactly what we needed—a clean landing page that actually converts. No fluff, just results."</blockquote>
+                        <cite>— Priya Sharma, SaaS Founder</cite>
+                    </div>
+                    <div class="testimonial">
+                        <blockquote>"Fast turnaround, excellent communication, and the site performs beautifully on mobile. Highly recommend."</blockquote>
+                        <cite>— David Chen, E-commerce Store</cite>
+                    </div>
+                    <div class="testimonial">
+                        <blockquote>"Finally found a developer who understands both design and performance. The Framer build was perfect."</blockquote>
+                        <cite>— Sarah Williams, Creative Agency</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="contact-content">
+                    <h2 class="section-title">Let's Work Together</h2>
+                    <p class="section-subtitle">Have a project in mind? Send me a message and I'll get back to you within 24 hours.</p>
+                    
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required aria-describedby="name-error">
+                            <div id="name-error" class="form-error" aria-live="polite"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required aria-describedby="email-error">
+                            <div id="email-error" class="form-error" aria-live="polite"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details *</label>
+                            <textarea id="message" name="message" required aria-describedby="message-error" placeholder="Tell me about your project, timeline, and budget..."></textarea>
+                            <div id="message-error" class="form-error" aria-live="polite"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        
+                        <div id="form-message" class="form-message" aria-live="polite"></div>
+                    </form>
+
+                    <div class="social-links">
+                        <a href="mailto:hello@aaron.site" aria-label="Email Aaron">hello@aaron.site</a>
+                        <a href="https://twitter.com/aaron_design" target="_blank" rel="noopener" aria-label="Aaron on Twitter">@aaron_design</a>
+                        <a href="#" target="_blank" rel="noopener" aria-label="Aaron on Behance">Behance</a>
+                        <a href="#" target="_blank" rel="noopener" aria-label="Aaron on Dribbble">Dribbble</a>
+                        <a href="#" target="_blank" rel="noopener" aria-label="Aaron on GitHub">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-note">No AI-generated templates. Built by hand.</div>
+                <ul class="footer-links">
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div>&copy; 2025 Aaron. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Header scroll behavior
+        let lastScrollY = window.scrollY;
+        const header = document.getElementById('header');
+
+        function updateHeader() {
+            const scrollY = window.scrollY;
+            
+            if (scrollY > 100) {
+                header.classList.add('compact');
+            } else {
+                header.classList.remove('compact');
+            }
+            
+            lastScrollY = scrollY;
+        }
+
+        window.addEventListener('scroll', updateHeader, { passive: true });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Contact form validation and handling
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('form-message');
+
+        function showMessage(message, type) {
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = 'block';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        function validateField(field) {
+            const value = field.value.trim();
+            const errorElement = document.getElementById(`${field.name}-error`);
+            
+            // Clear previous error
+            errorElement.textContent = '';
+            field.style.borderColor = '#e5e5e5';
+            
+            if (!value) {
+                errorElement.textContent = 'This field is required';
+                field.style.borderColor = '#dc3545';
+                return false;
+            }
+            
+            if (field.type === 'email') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    errorElement.textContent = 'Please enter a valid email address';
+                    field.style.borderColor = '#dc3545';
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        // Real-time validation
+        ['name', 'email', 'message'].forEach(fieldName => {
+            const field = document.getElementById(fieldName);
+            field.addEventListener('blur', () => validateField(field));
+            field.addEventListener('input', () => {
+                if (field.style.borderColor === 'rgb(220, 53, 69)') {
+                    validateField(field);
+                }
+            });
+        });
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const message = document.getElementById('message');
+            
+            const isNameValid = validateField(name);
+            const isEmailValid = validateField(email);
+            const isMessageValid = validateField(message);
+            
+            if (isNameValid && isEmailValid && isMessageValid) {
+                // Simulate form submission
+                showMessage('Thanks for your message! I\'ll get back to you within 24 hours.', 'success');
+                contactForm.reset();
+            } else {
+                showMessage('Please fix the errors above and try again.', 'error');
+            }
+        });
+
+        // Add JSON-LD structured data
+        const structuredData = {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Aaron",
+            "jobTitle": "Web Designer & Developer",
+            "description": "Student maker and web designer from India specializing in handcrafted websites, Framer development, and React/TypeScript applications.",
+            "url": "https://aaron.site",
+            "email": "hello@aaron.site",
+            "sameAs": [
+                "https://twitter.com/aaron_design",
+                "https://behance.net/aaron",
+                "https://dribbble.com/aaron",
+                "https://github.com/aaron"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "IN",
+                "addressRegion": "Kerala"
+            },
+            "offers": [
+                {
+                    "@type": "Service",
+                    "name": "Landing Page Design",
+                    "description": "Conversion-focused landing pages built in Framer or React",
+                    "priceRange": "₹25,000-₹40,000"
+                },
+                {
+                    "@type": "Service",
+                    "name": "Brand Design",
+                    "description": "Manual logo design and brand guidelines",
+                    "priceRange": "₹15,000-₹25,000"
+                }
+            ]
+        };
+
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(structuredData);
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
+
