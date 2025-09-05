@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron - Web Design</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cursor Glow -->
+    <div class="cursor-glow"></div>
+    
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Aaron C</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="typewriter" data-text="Aaron"></span>
+                </h1>
+                <p class="hero-tagline">Handcrafted Web Design & Ideas That Scale</p>
+                <div class="hero-description">
+                    <p>Student maker and web designer from Kerala, India</p>
+                </div>
+            </div>
+            <div class="hero-links">
+                <a href="https://x.com/aarocy" target="_blank" class="hero-link">
+                    <i class="fab fa-x-twitter"></i>
+                    @aarocy
+                </a>
+                <a href="mailto:aarocyrus.design@gmail.com" class="hero-link">
+                    <i class="fas fa-envelope"></i>
+                    aarocyrus.design@gmail.com
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-divider"></div>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="about-description">
+                        <p class="fade-up">I'm Aaron, a passionate web designer and student maker from Kerala, India. I specialize in creating handcrafted digital experiences that blend precision with creativity.</p>
+                        <p class="fade-up">My journey in web design started with curiosity and has evolved into a commitment to delivering high-end craftsmanship for businesses, creators, and innovators worldwide.</p>
+                    </div>
+                </div>
+                <div class="skills-container">
+                    <h3 class="skills-title">Skills & Expertise</h3>
+                    <div class="skills-grid">
+                        <div class="skill-bubble" data-skill="React">React</div>
+                        <div class="skill-bubble" data-skill="TypeScript">TypeScript</div>
+                        <div class="skill-bubble" data-skill="Framer">Framer</div>
+                        <div class="skill-bubble" data-skill="UI/UX">UI/UX</div>
+                        <div class="skill-bubble" data-skill="Branding">Branding</div>
+                        <div class="skill-bubble" data-skill="Animation">Animation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <div class="services-grid">
+                <div class="service-card glass-card">
+                    <div class="service-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>Full-Code React Sites</h3>
+                    <p>Custom React/TypeScript applications with modern architecture and seamless user experiences.</p>
+                </div>
+                <div class="service-card glass-card">
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Framer Builds</h3>
+                    <p>Interactive prototypes and production-ready websites built with Framer's powerful design tools.</p>
+                </div>
+                <div class="service-card glass-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Branding & Landing Pages</h3>
+                    <p>Lightweight, conversion-focused landing pages with cohesive branding for small businesses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-divider"></div>
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card slide-left">
+                    <div class="project-image">
+                        <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" alt="E-commerce Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>E-commerce Platform</h3>
+                        <p>Modern React-based e-commerce solution with TypeScript, featuring seamless checkout and inventory management.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">E-commerce</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card slide-right">
+                    <div class="project-image">
+                        <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Creative Agency">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Creative Agency Site</h3>
+                        <p>Stunning Framer-built website for a creative agency, featuring immersive animations and interactive elements.</p>
+                        <div class="project-tags">
+                            <span class="tag">Framer</span>
+                            <span class="tag">Animation</span>
+                            <span class="tag">Creative</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card slide-left">
+                    <div class="project-image">
+                        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Startup Landing">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Startup Landing Page</h3>
+                        <p>High-converting landing page for a tech startup, optimized for performance and user engagement.</p>
+                        <div class="project-tags">
+                            <span class="tag">Landing Page</span>
+                            <span class="tag">Conversion</span>
+                            <span class="tag">Startup</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card flip-card">
+                    <div class="testimonial-content">
+                        <p>"Aaron delivered an exceptional website that exceeded our expectations. His attention to detail and creative vision are remarkable for someone so young."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <span>Founder, TechStart</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card flip-card">
+                    <div class="testimonial-content">
+                        <p>"Working with Aaron was a fantastic experience. He brought our vision to life with stunning animations and flawless functionality."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <span>Creative Director</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-divider"></div>
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 class="section-title">Let's Create Something Amazing</h2>
+                    <p>Ready to bring your ideas to life? I'm here to help you create exceptional digital experiences.</p>
+                    <div class="contact-links">
+                        <a href="mailto:aarocyrus.design@gmail.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            aarocyrus.design@gmail.com
+                        </a>
+                        <a href="https://x.com/aarocy" target="_blank" class="contact-link">
+                            <i class="fab fa-x-twitter"></i>
+                            @aarocy
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 Aaron. Handcrafted with precision and passion.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://x.com/aarocy" target="_blank" class="social-icon">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="mailto:aarocyrus.design@gmail.com" class="social-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
