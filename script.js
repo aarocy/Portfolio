@@ -112,12 +112,18 @@ const observer = new IntersectionObserver((entries) => {
 // Observe elements for animations
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll(
-        '.fade-up, .slide-left, .slide-right, .flip-card, .skill-bubble, .project-card, .testimonial-card'
+        '.fade-up, .slide-left, .slide-right, .flip-card, .skill-bubble, .project-card, .process-step'
     );
     
     animatedElements.forEach(el => {
         observer.observe(el);
     });
+    
+    // Initialize floating skills animation
+    initFloatingSkills();
+    
+    // Initialize new animations
+    initNewAnimations();
 });
 
 // Smooth Scrolling for Navigation Links
@@ -158,8 +164,11 @@ document.querySelectorAll('.project-card').forEach(card => {
 // Form Handling
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
+    contactForm.setAttribute('action', 'https://formspree.io/f/xpznvbko');
+    contactForm.setAttribute('method', 'POST');
+    
     contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+        // Don't prevent default - let Formspree handle it
         
         const submitBtn = contactForm.querySelector('.submit-btn');
         const originalText = submitBtn.innerHTML;
@@ -167,18 +176,7 @@ if (contactForm) {
         // Button morphing animation
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.style.background = 'var(--gradient-2)';
-        
-        // Simulate form submission
-        setTimeout(() => {
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-            submitBtn.style.background = 'var(--gradient-3)';
-            
-            setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.style.background = 'var(--gradient-1)';
-                contactForm.reset();
-            }, 2000);
-        }, 2000);
+        submitBtn.disabled = true;
     });
 }
 
@@ -309,3 +307,161 @@ rainbowStyle.textContent = `
     }
 `;
 document.head.appendChild(rainbowStyle);
+
+// Initialize Floating Skills
+function initFloatingSkills() {
+    const floatingSkills = document.querySelectorAll('.floating-skill');
+    
+    floatingSkills.forEach((skill, index) => {
+        const delay = parseFloat(skill.getAttribute('data-delay')) * 1000;
+        
+        setTimeout(() => {
+            skill.style.animationPlayState = 'running';
+        }, delay);
+        
+        // Restart animation when it ends
+        skill.addEventListener('animationend', () => {
+            setTimeout(() => {
+                skill.style.animation = 'none';
+                setTimeout(() => {
+                    skill.style.animation = 'floatUp 8s ease-in-out infinite';
+                }, 100);
+            }, Math.random() * 3000 + 2000);
+        });
+    });
+}
+
+// Initialize New Animations
+function initNewAnimations() {
+    // Animation 1: Breathing effect on hero orbs
+    document.querySelectorAll('.gradient-orb').forEach(orb => {
+        orb.classList.add('breathing');
+    });
+    
+    // Animation 2: Liquid morph on skill bubbles
+    document.querySelectorAll('.skill-bubble').forEach((bubble, index) => {
+        if (index % 2 === 0) {
+            bubble.classList.add('liquid-morph');
+        }
+    });
+    
+    // Animation 3: Glitch effect on logo (on hover)
+    const logo = document.querySelector('.logo-text');
+    if (logo) {
+        logo.setAttribute('data-text', logo.textContent);
+        logo.addEventListener('mouseenter', () => {
+            logo.classList.add('glitch');
+            setTimeout(() => {
+                logo.classList.remove('glitch');
+            }, 1000);
+        });
+    }
+    
+    // Animation 4: Particle trail on navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            link.classList.add('particle-trail');
+            setTimeout(() => {
+                link.classList.remove('particle-trail');
+            }, 3000);
+        });
+    });
+    
+    // Animation 5: Elastic bounce on submit button
+    const submitBtn = document.querySelector('.submit-btn');
+    if (submitBtn) {
+        submitBtn.addEventListener('mouseenter', () => {
+            submitBtn.classList.add('elastic-bounce');
+        });
+        
+        submitBtn.addEventListener('mouseleave', () => {
+            submitBtn.classList.remove('elastic-bounce');
+        });
+    }
+}
+
+// Enhanced scroll animations with stagger
+function initStaggeredAnimations() {
+    const processSteps = document.querySelectorAll('.process-step');
+    
+    const processObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 200);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    processSteps.forEach(step => {
+        processObserver.observe(step);
+    });
+}
+
+// Initialize staggered animations
+document.addEventListener('DOMContentLoaded', () => {
+    initStaggeredAnimations();
+});
+
+// Enhanced magnetic effect for project cards
+document.querySelectorAll('.project-card').forEach(card => {
+    let isHovering = false;
+    
+    card.addEventListener('mouseenter', () => {
+        isHovering = true;
+        card.style.transition = 'transform 0.1s ease-out';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        isHovering = false;
+        card.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.320, 1)';
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+    });
+    
+    card.addEventListener('mousemove', (e) => {
+        if (!isHovering) return;
+        
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 8;
+        const rotateY = (centerX - x) / 8;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+    });
+});
+
+// Process step animations
+const processStepObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const step = entry.target;
+            const stepNumber = step.getAttribute('data-step');
+            
+            setTimeout(() => {
+                step.classList.add('visible');
+                
+                // Trigger specific animations based on step
+                if (stepNumber === '1') {
+                    const sketchLines = step.querySelectorAll('.sketch-line');
+                    sketchLines.forEach((line, index) => {
+                        setTimeout(() => {
+                            line.style.animationPlayState = 'running';
+                        }, index * 200);
+                    });
+                }
+            }, parseInt(stepNumber) * 150);
+        }
+    });
+}, { threshold: 0.3 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.process-step').forEach(step => {
+        processStepObserver.observe(step);
+    });
+});
